@@ -3,4 +3,4 @@ This is a simple library that implemts facebook Mentions . Very-Lightweight and 
 Facebook Mention
 ================
 
-![Screenshot](http://i.imgur.com/l8ITtnT.png)
+![Screenshot](http://i.imgur.com/dbtw1LP.png)
