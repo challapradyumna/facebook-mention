@@ -125,7 +125,7 @@ $data = array(
 );
 
 foreach ($data as $val) {
-    $query = " INSERT INTO users(id,name) VALUES ('".$val['id']."','".$val['name']."');";
+    $query = " INSERT INTO users(id,name) VALUES ('".$val['int']."','".$val['name']."');";
     $res = mysqli_query($db,$query);
 }
     //$res = mysqli_query($db, $query);
