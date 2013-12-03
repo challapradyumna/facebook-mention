@@ -7,9 +7,9 @@ $db_config = array(
 			'username'  => 'root',
 			'password'  => '',
 		);
-$table = "users";
-$column_name = "name";
-$column_id = "id";
+$table = "users"; //Table to search users 
+$column_name = "name"; //Column to search for names 
+$column_id = "id"; //Column to select the ID of the user
 
 //Database Retreival 
 if(isset($_POST)){ 
