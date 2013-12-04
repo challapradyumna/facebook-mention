@@ -1,18 +1,20 @@
 This is a simple library that implemts facebook Mentions . Very-Lightweight and Configurable to your needs .(Does not work in IE)
-Features :
 
-    Multiple Mentions
+<h3>Features :</h3>
+
+<ul><li>Multiple Mentions</li>
   
-    Editing names in Mention
+    <li>Editing names in Mention</li>
   
-    Automatically adding link to Mention
+    <li>Automatically adding link to Mention<h2></li>
+</ul>
   
 
-Things to do :
+<h3>Things to do :</h3>
 
-    Add Keyboard Support
-  
-    Fix Bugs
+ <ul><li>Add Keyboard Support</li>
+    <li>Fix Bugs</li>
+</ul>
   
 =======
 Facebook Mention
