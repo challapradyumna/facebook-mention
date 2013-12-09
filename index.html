@@ -48,7 +48,6 @@
 
 <div id="content">
 <div name="status" id="status"></div>
-<div id="suggest"></div>
 <button id="post_status">Post</button>
 </div>
 
@@ -58,6 +57,7 @@
         var tag_class = "tag"; //CSS Class for the tagged elemnts inside div 
         var profile_link = "http://127.0.0.1/user/"; // The ID from the database will be appended to this URL for tagged users
         var ping_url = "mention_post.php"; //URL from where the db results are returned .
+        var suggest = "#suggest";
     //plugin Start
         
         function placeCaretAtEnd(el) {
@@ -78,7 +78,6 @@
     }
 }
         $(status).prop('contentEditable',true);
-        $("#suggest").hide();
         $(".name").css("width",$(status).width());
 		var prev_matches;
 		var current_match;
@@ -92,17 +91,15 @@
 		                var tagged = "<a href='"+profile_link+$(this).attr('data')+"' class='"+tag_class+"'>"+$(this).html()+"</a>&nbsp;";
 		                var rep = text.replace(current_match,tagged);
 		                $(status).html(rep);
-                        placeCaretAtEnd($("#status").get(0))
-                        $("#suggest").html("");
-                        $("#suggest").hide();
+                        placeCaretAtEnd($("#status").get(0));
+                        $(suggest).remove();
                         console.log($(status).html());
             });
         $(status).keydown(function(e){
-        if(e.keyCode == 32){ //space
-		     $("#suggest").html("");
-		     $("#suggest").hide();
+        if(e.keyCode == 32 || e.keyCode == 27){ //space
+             $(suggest).remove();
 		    }
-		if($("#suggest").is(":visible"))
+		if($(suggest).is(":visible"))
 		{
 		    if(e.keyCode == 38) //up arrow
 		    {
@@ -131,8 +128,9 @@
     		       if($.inArray(matches[match],prev_matches) == -1){
     		            current_match = matches[match];
     		            console.log(matches[match]);
-    		            $("#suggest").html("");
-    		            $("#suggest").hide();
+    		            $(suggest).remove();
+    		            $(status).after('<div id="suggest"></div>');
+    		            
     		            
                         $.ajax({
                             url: ping_url,
@@ -146,10 +144,8 @@
                             success: function(data){ 
                                 console.log(data);
                                 var arr = $.parseJSON(data);
-                                $("#suggest").html("");
-                                $("#suggest").show();
                                 $.each(arr, function (index, value) {
-                                            $("#suggest").append("<div class='suggest_name' data='"+index+"' >"+value+"</div>");
+                                            $(suggest).append("<div class='suggest_name' data='"+index+"' >"+value+"</div>");
                                         });
                                 $('.suggest_name').first().css("background-color","#00BFFF");
                             }
